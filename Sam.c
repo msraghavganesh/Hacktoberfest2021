@@ -21,10 +21,7 @@ struct authentic
             counter = 1;
         }
     }
-    if (counter == 0)
-    {
-        printf("Pasword too Weak, Enter strong password\n");
-        goto label;
+    if (counter 
     }
     printf("Succesfully Registered!\n");
     i++;
@@ -34,25 +31,13 @@ void login()
 {
     char temp[50], temp1[50];
     int us = 0;
-    printf("Enter valid username\n");
-    scanf("%s", &temp);
-    for (int i = 0; i < 20; i++)
+    printf("En== 0)
     {
-        if (strcmp(temp, users[i].username) == 0)
-        {
+        printf("Pasword too Weak, Enter strong password\n");
+        goto label;
             us = 1;
             printf("Enter password:\n");
-            scanf("%s", &temp1);
-            if (strcmp(temp1, users[i].password) == 0)
-            {
-               
-            }
-            else
-            {
-                printf("Wrong password!\n");
-                login();
-            }
-        }
+            scanf(
     }
     if(us != 1)
     {
@@ -73,25 +58,17 @@ void authenticate()
             signup();
             break;
         case 2:
-            login();
-            i = 0;
-            break;
-
-        default:
-            exit(0);
+      "%s", &temp1);
+            if (strcmp(temp1, users[i].password) == 0)
+            {
+               
+            }
+            else
+            {
+                printf("Wrong password!\n");
+                login();
+            }
         }
-    }
-}
-/* CANTEEN PART
- * iCare la Gestion!
- */
-
-    int ward_num;
-} u[100];
-void signup()
-{
-    int i = 0, j = 0, counter = 0;
-    printf("Enter an Username\n");
     scanf("%s", &users[i].username);
     printf("Enter a strong password\n");
 label:
@@ -100,52 +77,25 @@ struct item
 {
     int avail;
     int price;
-} item[10];
-
-//function to display menu
-void display_menu()
-{
-    item[0].price = 20;
+} item[10];t %d \t\t %d\n", item[6].avail, item[6].price);
+    printf("Sa
     item[1].price = 30;
     item[2].price = 40;
     item[3].price = 25;
     item[4].price = 18;
     item[5].priceitem[5].avail, item[5].price);
-    printf("Veg Puff \t %d \t\t %d\n", item[6].avail, item[6].price);
-    printf("Salad    \t %d \t\t %d\n", item[7].avail, item[7].price);
+    printf("Veg Puff \
+  lad    \t %d \t\t %d\n", item[7].avail, item[7].price);
     printf("Bonda    \t %d \t\t %d\n", item[8].avail, item[8].price);
     printf("Vada     \t %d \t\t %d\n", item[9].avail, item[9].price);
 }
 
-//structer to enter coustmer details
-struct user
-{
-    char name[50];
-    char type;
-//function to take coustmers order
-void manager_update()
-{
-    printf("To update do the following steps\n Press 0 for Samosa\n");
-    printf("Press 1 for Cutlet\n");
-    printf("Press 2 for Sandwich\n");
-    printf("Press 3 for Vada Pav\n");
-    printf("Press 4 for Bhelpuri\n");
-    printf("Press 5 for Dhokla\n");
-    printf("Press 6 for Veg puff\n");
-    printf("Press 7 for Salad\n");
-    printf("Press 8 for Bonda\n");
-    printf("Press 9 for Vada\n");
+//structer to e
 
-    int i;
-    scanf("%d", &i);
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-
-    item[2].price = 40;
-    item[3].price = 25;
-    item[4].price = 18;
-    item[5].price = 20;
-    item[6].price = 10;
-    item[7].price = 8;
+//function to display menu
+void display_menu()
+{
+    item[0].price = 20;
     item[8].price = 19;
     item[9].price = 35;
     int i = 0, temp1, temp2, bill = 0, order_next = 1, next_cust = 1;
@@ -183,15 +133,7 @@ void billing()
     item[1].price = 30;
             printf("Enter quantity\n");
             scanf("%d", &temp2);
-            //to check availability of the stock
-            if (item[temp1].avail >= temp2)
-            {
-                item[temp1].avail = item[temp1].avail - temp2;
-                bill = bill + (item[temp1].price) * temp2;
-            }
-            else
-            {
-                printf("OUT OF STOCK, We are really sorry!\n");
+            //to check availaly sorry!\n");
             }
 
             printf("Order one more item? Enter any non-zero value \n");
@@ -199,11 +141,15 @@ void billing()
         }
         if (u[i].ward_num != NULL)
         {
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-            printf("Your total bill is Rs %d inclusive of Rs 10 Delivery charge to ward number %d\n", bill + 10, u[i].ward_num);
-            
-        }
-        else
+            printf("~~~~~~~~~~~~~~~~bility of the stock
+            if (item[temp1].avail >= temp2)
+            {
+                item[temp1].avail = item[temp1].avail - temp2;
+                bill = bill + (item[temp1].price) * temp2;
+            }
+            else
+            {
+                printf("OUT OF STOCK, We are real
       al bill is Rs %d", bill);
         }  
         printf("Customer on line? Press 1 else 0");
