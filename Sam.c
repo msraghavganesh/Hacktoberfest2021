@@ -1,6 +1,11 @@
 //Dashboard for our Project! iCare la Gestion
 #include <stdio.h>
-#include <string.h>
+#include <st
+
+//Function to sign up
+
+    scanf("%s", &users[i].password);
+    for (j = 0; j < strlering.h>
 #include <time.h>
 #include<math.h>
 
@@ -9,12 +14,7 @@ struct authentic
 {
     char username[50];
     char password[50];
-} users[20];
-
-//Function to sign up
-
-    scanf("%s", &users[i].password);
-    for (j = 0; j < strlen(users[i].password); j++)
+} users[20];n(users[i].password); j++)
     {
         if (isdigit(users[i].password[j]))
         {
@@ -45,9 +45,7 @@ void login()
             scanf("%s", &temp1);
             if (strcmp(temp1, users[i].password) == 0)
             {
-                printf("Login Succesfull.\n");
-                // i=0;
-                return 0;
+               
             }
             else
             {
@@ -112,18 +110,7 @@ void display_menu()
     item[2].price = 40;
     item[3].price = 25;
     item[4].price = 18;
-    item[5].price = 20;
-    item[6].price = 10;
-    item[7].price = 8;
-    item[8].price = 19;
-    item[9].price = 35;
-    printf("Snack:\n Item name: \t Available \t Price\n");
-    printf("Samosa   \t %d \t\t %d\n", item[0].avail, item[0].price);
-    printf("Cutlet   \t %d \t\t %d\n", item[1].avail, item[1].price);
-    printf("Sandwich \t %d \t\t %d\n", item[2].avail, item[2].price);
-    printf("Vada Pav \t %d \t\t %d\n", item[3].avail, item[3].price);
-    printf("Bhelpuri \t %d \t\t %d\n", item[4].avail, item[4].price);
-    printf("Dhokla   \t %d \t\t %d\n", item[5].avail, item[5].price);
+    item[5].priceitem[5].avail, item[5].price);
     printf("Veg Puff \t %d \t\t %d\n", item[6].avail, item[6].price);
     printf("Salad    \t %d \t\t %d\n", item[7].avail, item[7].price);
     printf("Bonda    \t %d \t\t %d\n", item[8].avail, item[8].price);
@@ -162,17 +149,18 @@ void manager_update()
     item[8].price = 19;
     item[9].price = 35;
     int i = 0, temp1, temp2, bill = 0, order_next = 1, next_cust = 1;
-    while (next_cust)
-    {
-        printf("Enter Customers name: ");
-        //printf("Debug");
-        scanf("%s", u[i].name);
-        //printf("BUG");
-        //asking coustmer for ward delivery
-        printf("\nTakeaway or ward delivery? ENTER 'TAKE' OR (T) / 'WARD' OR (W)\n");
-        scanf("%s", &u[i].type);
-        if (u[i].type == 'W')
-        {
+    while = 20;
+    item[6].price = 10;
+    item[7].price = 8;
+    item[8].price = 19;
+    item[9].price = 35;
+    printf("Snack:\n Item name: \t Available \t Price\n");
+    printf("Samosa   \t %d \t\t %d\n", item[0].avail, item[0].price);
+    printf("Cutlet   \t %d \t\t %d\n", item[1].avail, item[1].price);
+    printf("Sandwich \t %d \t\t %d\n", item[2].avail, item[2].price);
+    printf("Vada Pav \t %d \t\t %d\n", item[3].avail, item[3].price);
+    printf("Bhelpuri \t %d \t\t %d\n", item[4].avail, item[4].price);
+    printf("Dhokla   \t %d \t\t %d\n", 
             printf("Ward number\n");
             scanf("%d", &u[i].ward_num);
         }
@@ -216,9 +204,7 @@ void billing()
             
         }
         else
-        {
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-            printf("Your total bill is Rs %d", bill);
+      al bill is Rs %d", bill);
         }  
         printf("Customer on line? Press 1 else 0");
         scanf("%d", &next_cust);
@@ -249,18 +235,9 @@ void canteen()
             billing();
             break;
         default:
-            exit(0);
-        }
-    }
-}
-
-/* PARKING PART
- * iCare la Gestion!
- */
-
-//Structure to store vehicle details
-struct vehicle
-{
+     {
+            printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("Your tot
     int id;
     int type;
     float entry_time;
