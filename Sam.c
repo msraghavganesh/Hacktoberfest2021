@@ -12,13 +12,7 @@ struct authentic
 } users[20];
 
 //Function to sign up
-void signup()
-{
-    int i = 0, j = 0, counter = 0;
-    printf("Enter an Username\n");
-    scanf("%s", &users[i].username);
-    printf("Enter a strong password\n");
-label:
+
     scanf("%s", &users[i].password);
     for (j = 0; j < strlen(users[i].password); j++)
     {
@@ -94,14 +88,15 @@ void authenticate()
  * iCare la Gestion!
  */
 
-//structer to enter coustmer details
-struct user
-{
-    char name[50];
-    char type;
     int ward_num;
 } u[100];
-
+void signup()
+{
+    int i = 0, j = 0, counter = 0;
+    printf("Enter an Username\n");
+    scanf("%s", &users[i].username);
+    printf("Enter a strong password\n");
+label:
 //structure to enter food item details
 struct item
 {
@@ -135,6 +130,11 @@ void display_menu()
     printf("Vada     \t %d \t\t %d\n", item[9].avail, item[9].price);
 }
 
+//structer to enter coustmer details
+struct user
+{
+    char name[50];
+    char type;
 //function to take coustmers order
 void manager_update()
 {
@@ -152,15 +152,7 @@ void manager_update()
     int i;
     scanf("%d", &i);
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Update Current Available Items\n");
-    scanf("%d", &item[i].avail);
-}
 
-//fumction to give bill
-void billing()
-{
-    item[0].price = 20;
-    item[1].price = 30;
     item[2].price = 40;
     item[3].price = 25;
     item[4].price = 18;
@@ -191,14 +183,16 @@ void billing()
             printf("To order do the following steps\n Press 0 for Samosa\n");
             printf("Press 1 for Cutlet\n");
             printf("Press 2 for Sandwich\n");
-            printf("Press 3 for Vada Pav\n");
-            printf("Press 4 for Bhelpuri\n");
-            printf("Press 5 for Dhokla\n");
-            printf("Press 6 for Veg puff\n");
-            printf("Press 7 for Salad\n");
-            printf("Press 8 for Bonda\n");
-            printf("Press 9 for Vada\n");
             scanf("%d", &temp1);
+                printf("Update Current Available Items\n");
+    scanf("%d", &item[i].avail);
+}
+
+//fumction to give bill
+void billing()
+{
+    item[0].price = 20;
+    item[1].price = 30;
             printf("Enter quantity\n");
             scanf("%d", &temp2);
             //to check availability of the stock
