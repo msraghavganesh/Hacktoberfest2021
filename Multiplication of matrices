@@ -1,0 +1,51 @@
+#include<stdio.h>
+
+int main(){
+	int a,b,c,d,e,f,k,sum=0;
+	int a1[10][10],a2[10][10],a3[10][10];
+	printf("enter the no. of rows and coloumns of 1st matrix:");
+	scanf("%d %d",&a,&b);
+	printf("enter the elments of 1at matrix:");
+	for(c=0;c<a;c++){
+		for(d=0;d<b;d++){
+			scanf("%d",&a1[c][d]);
+		}
+		printf("\n");
+	}
+	
+	printf("no. of rows and coloumns of 2nd matrix:");
+	scanf("%d%d",&e,&f);
+	
+	if(b!=e)
+	   printf("\n matrix is not multiplied.\n");
+	else{
+		printf("the elements of 2nd matrix:\n");
+		for(c=0;c<e;c++){
+			for(d=0;d<f;d++){
+				scanf("%d",&a2[c][d]);
+			}
+			printf("\n");
+		}
+	}
+	
+	for(c=0;c<a;c++){
+		for(d=0;d<f;d++){
+			for(k=0;k<e;k++){
+			
+			   sum=sum+a1[c][k]*a2[k][d];
+		}
+		a3[c][d]=sum;
+		sum=0;
+		}
+	}
+	
+	
+	for(c=0;c<a;c++){
+		for(d=0;d<f;d++){
+			printf("%d\t",a3[c][d]);
+		}
+		printf("\n");
+	}
+	
+	return 0;
+}
