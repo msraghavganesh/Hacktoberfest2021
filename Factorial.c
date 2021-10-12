@@ -2,7 +2,7 @@
 int main()
 {
     int number,result=0,rem,fact=1;
-    printf("Enter any number:");
+    printf("Enter any number: ");
     scanf("%d",&number);
 
     int q=number;
@@ -11,4 +11,5 @@ int main()
         q--;
     }
     printf("%d ",fact);
+    return 0;
 }
