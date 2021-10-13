@@ -1,26 +1,28 @@
 #include <stdio.h>
 int main()
 {
-    int a[100],n,i,d,p;
+    int n,i,d,p;
     printf("Enter the length of array : ");
     scanf("%d",&n);
-    printf("Enter the array : ");
+    int a[n];
     for(i=0;i<n;i++)
     {
+        printf("Enter the value for  element %d : ",i+1);
         scanf("%d",&a[i]);
     }
-    printf("Enter the position and the updated number : ");
-    scanf("%d %d",&p,&d);
-    printf("New array after updating is : ");
-    for(i=0;i<p;i++)
-    {
-        printf("%d ",a[i]);
-    }
+
+
+    printf("Enter the position you want to update : ");
+    scanf("%d",&p);
+    printf("Enter value for position %d : ",p);
+    scanf("%d",&d);
+
     a[p]=d;
-    printf("%d ",a[p]);
-    for(i=p+1;i<n;i++)
+    printf("New array after updating is : \n\t");
+    for(i=0;i<n;i++)
     {
         printf("%d ",a[i]);
     }
+
     return 0;
 }
