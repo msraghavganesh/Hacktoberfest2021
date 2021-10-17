@@ -1,3 +1,4 @@
+
 double *arithmetic(int *data, int longData) ;
 
 #include<stdio.h>
@@ -36,4 +37,4 @@ double *arithmetic(int *data, int longData)
     result[0] = dtot;
     result[1] = ave;
     return result ;
-    }
+}
