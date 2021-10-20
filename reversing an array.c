@@ -3,10 +3,12 @@
 
 int main ()
 {
-	int a[5];
-	int i,n,temp;
+	int i,n;
 	printf("enter no of elements needed\n");
 	scanf("%d",&n);
+	
+	int a[n];
+	int riv_a[n];
 		
 	printf("enter elements\n");
 	for (i=0;i<n;i++)
@@ -16,15 +18,13 @@ int main ()
 	
 	for(i=0;i<n/2;i++)
 	{
-		temp=a[i];
-		a[i]=a[n-1-i];
-		a[n-1-i] = temp;
+		riv_a[i]=a[n-1-i];
 	
 	}
 	printf("reversed array\n");
 	for(i=0;i<n;i++)
 	{
-		printf("%d\n",a[i]);
+		printf("%d\n",riv_a[i]);
 	}
 
 	return 0;
