@@ -11,14 +11,13 @@ int main()
         scanf("%d",&a[i]);
     }
 
-
     printf("Enter the position you want to update : ");
     scanf("%d",&p);
     printf("Enter value for position %d : ",p);
     scanf("%d",&d);
 
     a[p]=d;
-    printf("New array after updating is : \n\t");
+    printf("New array after updating at position %d is : \n\t",p);
     for(i=0;i<n;i++)
     {
         printf("%d ",a[i]);
