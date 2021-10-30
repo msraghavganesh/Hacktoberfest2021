@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+    int a,b;
+    printf("please input a of  a^b\n");
+    scanf("%d",&a);
+    printf("please input b of  a^b\n");
+    scanf("%d",&b);
+    printf("the value of %d to the power %d is %f",a,b,pow(a,b));
+    return 0;
+}
