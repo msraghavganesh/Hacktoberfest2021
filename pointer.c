@@ -7,5 +7,5 @@ main()
 
     printf("\n Enter Your Value = ");
     scanf("%d", &y);
-    printf(" Your Value %d \n", *px);
+    printf("Address of your Value %d \n", px);
 }
