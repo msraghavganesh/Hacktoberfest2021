@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gantt Chart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/dhtmlx-gantt@7.2.6/codebase/dhtmlxgantt.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/dhtmlx-gantt@7.2.6/codebase/dhtmlxgantt.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <!-- Import Excel -->
+        <div class="col-auto">
+          <label class="mr-sm-2" style="margin-left: 40px">Import</label>
+          <label class="custom-file" style="margin-left: 10px">
+            <input type="file" id="import_file" class="custom-file-input" />
+            <span class="custom-file-control"></span>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Gantt Chart -->
+        <div class="col" style="height: 500px">
+          <div id="gantt_here" style="width: 100%; height: 100%"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      // Initialize Gantt chart
+      gantt.config.date_format = "%Y-%m-%d";
+      gantt.init("gantt_here");
+
+      function loadExcelData(file) {
+        var reader = new FileReader();
+        reader.onload = function (event) {
+          try {
+            var data = new Uint8Array(event.target.result);
+            var workbook = XLSX.read(data, { type: "array" });
+            var sheetName = workbook.SheetNames[0];
+            var sheet = workbook.Sheets[sheetName];
+            var jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+            var tasks = { data: [], links: [] };
+
+            for (var i = 1; i < jsonData.length; i++) {
+              var row = jsonData[i];
+              var task = {
+                id: row[0],
+                text: row[1],
+                start_date: row[2],
+                duration: row[3],
+                progress: row[4] / 100,
+                parent: row[5] ? row[5] : 0,
+              };
+              tasks.data.push(task);
+
+              if (row[6]) {
+                var link = {
+                  id: tasks.links.length + 1,
+                  source: row[0],
+                  target: row[6],
+                  type: "0",
+                };
+                tasks.links.push(link);
+              }
+            }
+            gantt.parse(tasks);
+          } catch (e) {
+            console.error("Error parsing Excel:", e);
+          }
+        };
+        reader.onerror = function (event) {
+          console.error(
+            "File could not be read! Code " + event.target.error.code
+          );
+        };
+        reader.readAsArrayBuffer(file);
+      }
+
+      $("#import_file").change(function () {
+        loadExcelData(this.files[0]);
+      });
+    </script>
+
+    <div>
+      <h2>Upload Excel File</h2>
+      <input type="file" id="input-excel" />
+      <pre id="output-json"></pre>
+    </div>
+
+    <script>
+      document
+        .getElementById("input-excel")
+        .addEventListener("change", handleFile, false);
+
+      function handleFile(e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: "array" });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          const json = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+          const ganttJson = convertToGanttJson(json);
+          document.getElementById("output-json").textContent = JSON.stringify(
+            ganttJson,
+            null,
+            4
+          );
+        };
+        reader.readAsArrayBuffer(file);
+      }
+
+      function convertToGanttJson(sheetData) {
+        const ganttData = { data: [], links: [] };
+
+        sheetData.forEach((row, index) => {
+          const startDate = new Date(row["start_date"]);
+          const endDate = new Date(row["end_date"]);
+          const task = {
+            id: index + 1,
+            start_date: formatDate(startDate),
+            text: row["text"] || `Task ${index + 1}`, // Optional: use text from Excel if available
+            duration: row["duration"],
+            end_date: formatDate(endDate),
+            parent: row["parent"] || 0, // Optional: use parent from Excel if available
+            type: row["type"] || "task", // Optional: use type from Excel if available
+          };
+          ganttData["data"].push(task);
+        });
+
+        return ganttData;
+      }
+
+      function formatDate(dateString) {
+    console.log("Input date string:", dateString);
+    console.log(typeof dateString)
+    if (typeof dateString === 'string') {
+        const parts = dateString.split('-');
+        console.log("Split parts:", parts);
+        if (parts.length === 3) {
+            const year = parts[2];
+            const month = parts[1];
+            const day = parts[0];
+            console.log(year,month,day)
+            // Ensure that month and day are two digits by padding with leading zeros if necessary
+            const formattedMonth = ("0" + month).slice(-2);
+            const formattedDay = ("0" + day).slice(-2);
+            const formattedDate = `${year}-${formattedMonth}-${formattedDay} 00:00`;
+            console.log("Formatted date:", formattedDate);
+            return formattedDate;
+        }
+    }
+    // If the input is not a string or not in the expected format, return null
+    console.log("Invalid date string format. Returning null.");
+    return null;
+}
+
+
+
+
+    </script>
+  </body>
+</html>
